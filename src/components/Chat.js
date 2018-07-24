@@ -6,11 +6,12 @@ const isOwn = message => message.sender === "@sekhmet:localhost";
 
 const Message = ({ message }) => (
   <div
+    title={`${message.sender} at ${new Date(message.timestamp).toISOString()}`}
     className={className("bubble", {
       "bubble--own": isOwn(message)
     })}
   >
-    {message.sender}: {message.body}
+    {message.body}
   </div>
 );
 
