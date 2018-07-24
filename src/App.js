@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import SplitPane from "react-split-pane";
-import classNames from "classnames";
 import client from "./client";
 import "./App.css";
+import RoomList from "./components/RoomList";
 
 class App extends Component {
   state = {
@@ -31,19 +31,11 @@ class App extends Component {
 
     return (
       <SplitPane split="vertical" minSize={50} defaultSize="25%">
-        <div>
-          {rooms.map(room => (
-            <a
-              key={room.room_id}
-              onClick={() => this.handleRoomJoinClick(room.room_id)}
-              className={classNames("room", {
-                "room--active": activeRoom === room.room_id
-              })}
-            >
-              {room.canonical_alias}
-            </a>
-          ))}
-        </div>
+        <RoomList
+          rooms={rooms}
+          activeRoom={activeRoom}
+          onRoomClick={this.handleRoomJoinClick}
+        />
         <div>{activeRoom}</div>
       </SplitPane>
     );
