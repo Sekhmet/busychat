@@ -1,3 +1,17 @@
+.right {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.right > div {
+  flex: 1;
+}
+
+input {
+  width: 100%;
+}
+
 .room {
   cursor: pointer;
   display: block;

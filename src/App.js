@@ -58,6 +58,21 @@ class App extends Component {
     });
   };
 
+  handleMessageSend = event => {
+    const { activeRoom } = this.state;
+
+    event.preventDefault();
+
+    if (!activeRoom) return;
+
+    client.sendMessage(activeRoom, {
+      msgtype: "m.text",
+      body: event.target.firstChild.value
+    });
+
+    event.target.firstChild.value = "";
+  };
+
   render() {
     const { rooms, activeRoom, messages } = this.state;
 
@@ -68,7 +83,14 @@ class App extends Component {
           activeRoom={activeRoom}
           onRoomClick={this.handleRoomJoinClick}
         />
-        <Chat room={activeRoom} messages={messages} />
+        <div className="right">
+          <div>
+            <Chat room={activeRoom} messages={messages} />
+          </div>
+          <form onSubmit={this.handleMessageSend}>
+            <input id="message" name="message" type="text" />
+          </form>
+        </div>
       </SplitPane>
     );
   }
