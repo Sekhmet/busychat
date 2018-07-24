@@ -10,6 +10,26 @@
   background: #e3e3e3;
 }
 
+.chat {
+  padding: 16px;
+}
+
+.bubble {
+  padding: 12px;
+  background: #d4d4d4;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  float: left;
+  clear: both;
+  font-size: 14px;
+}
+
+.bubble--own {
+  float: right;
+  background-color: #185cff;
+  color: white;
+}
+
 .Resizer {
   background: #000;
   opacity: 0.2;
